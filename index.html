@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="Maze.js"></script>
+    <script src="astar.js"></script>
+    <script src="Cell.js"></script>
+    <script src="CellSet.js"></script>
+    <script src="HtmlProcess.js"></script>
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="allElement">
+    <h1>Astar Algorithm</h1>
+
+    <div class="topButton">
+        <button type="button" class="button" onclick="maze.setClickValue(2);"><a>SET START</a></button>
+        <button type="button" class="button" onclick="maze.setClickValue(3);"><a>SET END</a></button>
+        <button type="button" class="button" onclick="maze.setClickValue(1);"><a>SET WALL</a></button>
+        <button type="button" class="button" onclick="reset();"><a>RESET ALL</a></button>
+    </div>
+    <div id="mainMaze"></div>
+    <div class="bottomButton">
+        <button type="button" class="button" onclick="run();"><a>RUN</a></button>
+    </div>
+</div>
+<script>
+    let maze = new Maze(25, 25);
+    let htmlProcess = new HtmlProcess(maze,400,400);
+    maze.show();
+    maze.setClickValue(0);
+    function reset() {
+        maze = new Maze(25, 25);
+        maze.show();
+    }
+    function run(){
+        let astarAlgo = new Astar(maze);
+        astarAlgo.executeAstar();
+    }
+</script>
+</body>
+</html>
